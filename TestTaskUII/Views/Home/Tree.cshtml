@@ -1,0 +1,19 @@
+﻿
+<div id="search-output" class="d-none"></div>
+<div id="treeview2" class="treeview" style="width:100%;">
+
+</div>
+
+<script>
+    var treeData = @Html.Raw(ViewBag.Structure);
+    $(function () {
+        var defaultData = treeData;
+        $('#treeview2').treeview({
+            levels: 10,
+            data: defaultData,
+            onNodeSelected: function (event, data) { NodeSelected(data); },
+            onNodeUnselected: function (event, data) { NodeUnselected(); }
+        });
+        console.log(treeData);
+    });
+</script>

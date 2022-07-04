@@ -1,0 +1,33 @@
+﻿@model TestTaskDomain.Models.CompanySubdivision
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h5>Редактирование</h5>
+        <a href="#" class="link-info" data-bs-dismiss="modal" area-hidden="true" >
+            <i class="fa fa-close"></i>
+        </a>
+
+    </div>
+
+    <div class="row modal-body">
+        <form asp-action="Create" class="col-12">
+
+            <input type="hidden" asp-for="Id" class="form-control" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Наименование:</label>
+                <input asp-for="Name" class="form-control" required/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanySubdivisionId" class="control-label">Перенести в:</label>
+                <select asp-for="CompanySubdivisionId" asp-items="@(ViewData["AllowList"] as SelectList)" class="form-control" style="z-index:999"></select>
+            </div>
+
+        </form>
+    </div>
+    <div class="text-right modal-footer">
+        <a class="mr-15 btn btn-outline-secondary" data-bs-dismiss="modal" area-hidden="true">Отмена</a>
+        <input type="button" onclick="SaveTreeNodeChange($('form').serialize(), 'Edit')" value="Сохранить" class="btn btn-primary" />
+    </div>
+</div>

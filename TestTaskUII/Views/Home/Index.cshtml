@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+   
+<div class="card">
+    <div class="card-block">
+        <div id="modDialog" class="modal fade">
+            <div id="dialogContent" class="modal-dialog"></div>
+        </div>
+
+        <div class="row" >
+            <div class="col-sm-5">
+                <div class="form-row mb-2 ">
+                        <div class="input-group">
+                            <a href="/Home/GetXmlFile" class="btn btn-sm btn-light waves-effect waves-light">
+                               Экспорт XML <i class="fa fa-file-code-o"></i>
+                            </a>
+                            <button type="button" onclick="Upload()" class="btn btn-sm btn-light waves-effect waves-light">
+                               Импорт XML <i class="fa fa-file-code-o"></i>
+                            </button>
+                            <button type="button" onclick="EditNode()" class="btn btn-sm btn-light waves-effect waves-light" disabled data-saction>
+                                Изменить <i class="fa fa-pencil"></i>
+                            </button>
+                            <button type="button" onclick="DeleteNode()" class="btn btn-sm btn-danger waves-effect waves-light" disabled data-saction>
+                               Удалить <i class="fa fa-remove"></i>
+                            </button>
+                            <button type="button" id="btnAddStruct" onclick="CreateNode()" class="btn btn-sm btn-primary waves-effect waves-light">
+                                Добавить <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                   
+                    <div id="TreeContent" class="col-12">
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+            var id = "";
+        var sstructId = "";
+
+        $(document).ready(function () {
+            GetTree();
+        });
+        function NodeSelected(data) {
+            id = data['nodeId']; 
+            sstructId = data['href'];
+            $('[data-saction]').removeAttr("disabled");
+        }
+        function NodeUnselected() {
+            $('[data-saction]').attr("disabled", "disabled");
+        }
+
+        function SaveTreeNodeChange(content, type) {
+
+            $.ajax({
+                url: "/Home/" + type,
+                method: "POST",
+                data: content,
+                success: function (data) {
+                    $('#modDialog').modal('hide');
+                    GetTree();
+                    if (type != "Create" && type != "Edit") {
+                        $('[data-saction]').attr("disabled", "disabled");
+                    }
+                }
+            });
+        }
+
+
+        function CreateNode() {
+            $.get("/Home/Create?id=" + sstructId, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+        }
+        function DeleteNode() {
+            $.get("/Home/Delete?id=" + sstructId, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+        }
+        function EditNode() {
+            $.get("/Home/Edit?id=" + sstructId, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+        }
+function Upload() {
+    $.get("/Home/UploadXmlFile", function(data) {
+        $('#dialogContent').html(data);
+        $('#modDialog').modal('show');
+    });
+}
+function UploadXmlFile() {
+var dosya = $('input[type=file]');
+        var form = $('#myform')[0];
+        var formData = new FormData(form);
+        formData.append("file", dosya[0].files[0]);
+        $.ajax({
+            url: '/Home/UploadXmlFile',
+            data: formData,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (result) {
+                 $('#modDialog').modal('hide');
+                GetTree();
+            }
+        });
+   
+}
+
+
+        function GetTree() {
+            $.get("/Home/GetTree?id=" + sstructId, function (data) {
+                $('#TreeContent').html(data);
+            });
+        }
+
+</script>
+}

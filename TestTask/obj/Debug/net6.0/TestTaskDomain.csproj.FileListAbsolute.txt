@@ -1,0 +1,14 @@
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.csproj.AssemblyReference.cache
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.AssemblyInfoInputs.cache
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.AssemblyInfo.cs
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.csproj.CoreCompileInputs.cache
+C:\Users\Murad\source\repos\TestTask\TestTask\bin\Debug\net6.0\TestTaskDomain.deps.json
+C:\Users\Murad\source\repos\TestTask\TestTask\bin\Debug\net6.0\TestTaskDomain.dll
+C:\Users\Murad\source\repos\TestTask\TestTask\bin\Debug\net6.0\TestTaskDomain.pdb
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.dll
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\refint\TestTaskDomain.dll
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.pdb
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\ref\TestTaskDomain.dll
+C:\Users\Murad\source\repos\TestTask\TestTask\bin\Debug\net6.0\TestTaskDomain.runtimeconfig.json
+C:\Users\Murad\source\repos\TestTask\TestTask\obj\Debug\net6.0\TestTaskDomain.genruntimeconfig.cache
